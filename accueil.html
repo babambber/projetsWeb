@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Accueil</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="accueil.css" />
+ </head>
+ <body onload="template()">
+ 
+  <div id="titre">
+   Mes<br />
+   Recettes
+  </div>
+  
+  <img src="gastronomie.jpg" id="circleH" />
+  <img src="tian.jpg" id="circleM" />
+  <img src="tartines.jpg" id="circleB" />
+  
+  <a href="accueil.html"><div id="accueil" onmouseout="out()">Accueil</div></a>
+  <a href="consultation.php"><div id="consultation" onmouseover="selection(event)" onmouseout="out()">Consulter mes recettes</div></a>
+  <a href="ajout.php"><div id="ajout" onmouseover="selection(event)" onmouseout="out()">Ajouter une recette</div></a>
+  <span id="barreAcc"></span>
+  <span id="barre"></span>
+  
+  <script>
+   var accueil = document.getElementById("accueil");
+   var consultation = document.getElementById("consultation");
+   var ajout = document.getElementById("ajout");
+   var titre = document.getElementById("titre");
+   var barre = document.getElementById("barre");
+   var barreAcc = document.getElementById("barreAcc");
+   var circleH = document.getElementById("circleH");
+   var circleM = document.getElementById("circleM");
+   var circleB = document.getElementById("circleB");
+   
+   
+   var h = screen.height;
+   var m = screen.width/2;
+   
+   var posAcc = h/4;
+   
+   var hAcc = accueil.clientHeight;
+   var hConsu = consultation.clientHeight;
+   var espace = hAcc/5;
+   
+   var posConsu = posAcc + hAcc + espace;
+   var posAj = posConsu + hAcc + espace;
+   
+   var wAcc = accueil.clientWidth;
+   var wConsu = consultation.clientWidth;
+   var wAj = ajout.clientWidth;
+   
+   function template()
+   {
+    titre.style.right = m - m/4 + "px";
+	titre.style.height = h + "px";
+	
+	circleH.style.right = m - m/4 - 50 + "px";
+	circleH.style.top = h/8 + "px";
+   
+    circleM.style.right = m - m/4 - 50 + "px";
+	circleM.style.top = h/3 + "px";
+   
+    circleB.style.right = m - m/4 - 50 + "px";
+	circleB.style.top = 13*h/24 + "px";
+   
+    accueil.style.top = posAcc + "px";   
+    accueil.style.width = wAcc + "px";   
+	
+    consultation.style.top = posConsu + "px"; 
+	consultation.style.width = wConsu + "px"; 
+	
+	ajout.style.top = posAj + "px";
+	ajout.style.width = wAj + "px"; 
+	
+	barreAcc.style.top = posAcc + (9*hAcc)/10  + "px";
+	barreAcc.style.width = wAcc + "px";
+	barreAcc.style.height = hAcc/10 + "px";
+	barreAcc.style.backgroundColor = "black";
+	barreAcc.style.opacity = 0.7;
+   }
+   
+   function selection(event)
+   {
+	if(event.target == consultation)
+	{
+	 barre.style.top = posConsu + (9*hAcc)/10  + "px";
+	 barre.style.width = wConsu + "px";
+	 barre.style.height = hAcc/10 + "px";
+	 barre.style.backgroundColor = "black";
+	 barre.style.opacity = 0.7;
+	}
+	if(event.target == ajout)
+	{
+	 barre.style.top = posAj + (9*hAcc)/10  + "px";
+	 barre.style.width = wAj + "px";
+	 barre.style.height = hAcc/10 + "px";
+	 barre.style.backgroundColor = "black";
+	 barre.style.opacity = 0.7;
+	}
+   }
+   
+   function out()
+   {
+    barre.style.opacity = 0;
+   }
+  </script>
+ </body>
+</html>
